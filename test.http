@@ -1,0 +1,25 @@
+POST http://localhost:3000/process HTTP/1.1
+content-type: application/json
+
+{
+    "settings":
+        {
+            "name": "test name",
+            "batch_type": "",
+            "inactivation_reason": "",
+            "ecl": "<<27624003",
+            "term": "kronisk"
+        },
+    "criteria": [],
+    "replace": []
+}
+
+###
+
+GET http://localhost:8080/fhir/ValueSet/$expand
+    ?url=http://snomed.info/sct/45991000052106
+        ?fhir_vs=ecl/<<27624003
+        &includeDesignations=true
+        &count=1
+        &filter=kronisk
+Accept-Language: sv
