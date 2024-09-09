@@ -18,8 +18,18 @@ content-type: application/json
 
 GET http://localhost:8080/fhir/ValueSet/$expand
     ?url=http://snomed.info/sct/45991000052106
-        ?fhir_vs=ecl/<<27624003
+        ?fhir_vs=ecl/%3c%3c27624003
         &includeDesignations=true
+        &count=1
+Accept-Language: en
+
+###
+
+GET https://browser.ihtsdotools.org/fhir/ValueSet/$expand
+    ?url=http://snomed.info/sct/45991000052106
+        ?fhir_vs=ecl/%3c%3c27624003
+        &includeDesignations=true
+        &displayLanguage=sv
         &count=1
         &filter=kronisk
 Accept-Language: sv
