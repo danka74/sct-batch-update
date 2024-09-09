@@ -27,10 +27,10 @@ pub async fn process_batch(
         Ok(resp) => {
             match resp.json::<ValueSet>().await {
                 Ok(vs) => {
-                    if let Some(exp) = vs.expansion.as_ref() {
-                        for contains in exp.contains.iter() {
+                    if let Some(expansion) = vs.expansion.as_ref() {
+                        for contains in expansion.contains.iter() {
                             if let Some(concept) = contains.as_ref() {
-                                let sctid = concept.code.as_ref().unwrap();
+                                let code = concept.code.as_ref().unwrap();
 
                                 let designations = concept.designation
                                     .iter()
@@ -45,7 +45,7 @@ pub async fn process_batch(
                                     });
                                 for designation in designations {
                                     // println!("{designation:#?}");
-                                    println!("{}: {}", sctid, designation.as_ref().unwrap().value);
+                                    println!("{}: {}", code, designation.as_ref().unwrap().value);
                                 }
                             }
                         }
