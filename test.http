@@ -8,7 +8,7 @@ content-type: application/json
             "batch_type": "",
             "inactivation_reason": "",
             "ecl": "<<27624003",
-            "term": "kronisk"
+            "term": "chronic"
         },
     "criteria": [],
     "replace": []
@@ -20,7 +20,9 @@ GET http://localhost:8080/fhir/ValueSet/$expand
     ?url=http://snomed.info/sct/45991000052106
         ?fhir_vs=ecl/%3c%3c27624003
         &includeDesignations=true
+        &includeDescriptionId=true
         &count=1
+        &filter=chronic
 Accept-Language: en
 
 ###
